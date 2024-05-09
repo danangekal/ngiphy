@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 
 import {
@@ -23,17 +24,19 @@ export default async function HomePage() {
 
   return (
     <main className="flex min-h-screen flex-col p-24">
-      {/* search container */}
-      <SearchContainer type="home" />
+      <Suspense>
+        {/* search container */}
+        <SearchContainer type="home" />
 
-      {/* suggestion trending search container */}
-      <SuggestionContainer data={trendingSearch?.data} />
+        {/* suggestion trending search container */}
+        <SuggestionContainer data={trendingSearch?.data} />
 
-      {/* trending gif container */}
-      <TrendingContainer data={trending?.data} />
+        {/* trending gif container */}
+        <TrendingContainer data={trending?.data} />
 
-      {/* categories gif container */}
-      <CategoriesContainer data={categories?.data} />
+        {/* categories gif container */}
+        <CategoriesContainer data={categories?.data} />
+      </Suspense>
     </main>
   );
 }
