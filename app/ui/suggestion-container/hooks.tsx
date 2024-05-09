@@ -9,7 +9,7 @@ const useHooks = () => {
   const { keyword, rating } = state;
   const handleClick = (word: string) => {
     dispatch(setKeyword(word));
-    push(`/search?keyword=${word}&rating=${rating}`);
+    push(`/search?page=1&rating=${rating}&keyword=${word}`);
   };
 
   return {

@@ -1,6 +1,6 @@
 import Strings from '@/app/strings';
 
-const CategoriesBar = ({ data }: any) => (
+const CategoriesContainer = ({ data }: any) => (
   <div className="flex flex-col w-full items-center justify-between">
     <div className="flex flex-row space-x-1 py-4 text-sm text-blue-500 ">
       <svg
@@ -23,13 +23,13 @@ const CategoriesBar = ({ data }: any) => (
         />
       </svg>
 
-      <p>{Strings.title_categories_bar}</p>
+      <p>{Strings.title_categories_container}</p>
     </div>
-    <div className="grid grid-cols-1 sm:grid-cols-3">
+    <div className="grid grid-cols-2 sm:grid-cols-4">
       {data?.map(({ name, name_encoded }: any) => (
         <button
           key={name_encoded}
-          className="border border-blue-500 text-blue-500 text-xs me-2 px-2.5 py-0.5 my-0.5 rounded-full"
+          className="border border-black dark:border-white text-white text-xs truncate me-2 bg-blue-500 px-2.5 py-0.5 my-0.5 rounded-full"
         >
           {name}
         </button>
@@ -38,4 +38,4 @@ const CategoriesBar = ({ data }: any) => (
   </div>
 );
 
-export default CategoriesBar;
+export default CategoriesContainer;

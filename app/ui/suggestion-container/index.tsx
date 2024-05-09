@@ -4,7 +4,7 @@ import Strings from '@/app/strings';
 
 import useHooks from './hooks';
 
-const SuggestionBar = ({ data }: any) => {
+const SuggestionContainer = ({ data }: any) => {
   const { handleClick, keyword } = useHooks();
 
   return (
@@ -24,15 +24,16 @@ const SuggestionBar = ({ data }: any) => {
             d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
           />
         </svg>
-        <p>{Strings.title_suggestion_bar}</p>
+        <p>{Strings.title_suggestion_container}</p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2">
+      <div className="grid grid-cols-1 sm:grid-cols-3">
         {data?.map((word: string) => (
           <button
             key={word}
             onClick={() => handleClick(word)}
-            className={`border border-blue-500 text-blue-500 text-xs me-2 px-2.5 py-0.5 my-0.5 rounded-full
-              ${keyword === word ? 'bg-blue-100' : ''}`}
+            className={`border border-blue-500 text-blue-500 text-xs truncate me-2 px-2.5 py-0.5 my-0.5 rounded-full
+              ${keyword === word ? 'bg-blue-100' : ''}
+            `}
           >
             {word}
           </button>
@@ -42,4 +43,4 @@ const SuggestionBar = ({ data }: any) => {
   );
 };
 
-export default SuggestionBar;
+export default SuggestionContainer;

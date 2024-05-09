@@ -1,19 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import useHooks from './hooks';
 
 const VideoCarousel = ({ videos }: any) => {
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-
-  const prevSlide = () => {
-    setCurrentVideoIndex(
-      (prevIndex) => (prevIndex - 1 + videos?.length) % videos?.length,
-    );
-  };
-
-  const nextSlide = () => {
-    setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos?.length);
-  };
+  const { currentVideoIndex, prevSlide, nextSlide } = useHooks(videos);
 
   return (
     <div className="flex justify-center items-center">
@@ -23,17 +13,14 @@ const VideoCarousel = ({ videos }: any) => {
             {videos?.map(({ id, images }: any, index: number) => (
               <div
                 key={id}
+                data-testid={`video-${index}`}
                 className={`w-full flex-none ${
                   index === currentVideoIndex ? 'block' : 'hidden'
                 }`}
               >
-                <video controls>
-                  <source
-                    className="w-full"
-                    src={images?.original?.mp4}
-                    type="video/mp4"
-                  />
-                  {/* Your browser does not support the video tag. */}
+                <video className="w-full" controls>
+                  <source src={images?.original?.mp4} type="video/mp4" />
+                  Your browser does not support the video tag.
                 </video>
               </div>
             ))}

@@ -5,10 +5,10 @@ import {
   getTrendingData,
   getTrendingSearchData,
 } from './action';
-import CategoriesBar from './ui/categories-bar';
-import SearchBar from './ui/search-bar';
-import SuggestionBar from './ui/suggestion-bar';
-import TrendingBar from './ui/trending-bar';
+import CategoriesContainer from './ui/categories-container';
+import SearchContainer from './ui/search-container';
+import SuggestionContainer from './ui/suggestion-container';
+import TrendingContainer from './ui/trending-container';
 import Strings from './strings';
 
 export const metadata: Metadata = {
@@ -23,17 +23,17 @@ export default async function HomePage() {
 
   return (
     <main className="flex min-h-screen flex-col p-24">
-      {/* search bar */}
-      <SearchBar page="home" />
+      {/* search container */}
+      <SearchContainer type="home" />
 
-      {/* suggestion trending search bar */}
-      <SuggestionBar data={trendingSearch?.data} />
+      {/* suggestion trending search container */}
+      <SuggestionContainer data={trendingSearch?.data} />
 
-      {/* trending gif bar */}
-      <TrendingBar data={trending?.data} />
+      {/* trending gif container */}
+      <TrendingContainer data={trending?.data} />
 
-      {/* categories gif bar */}
-      <CategoriesBar data={categories?.data} />
+      {/* categories gif container */}
+      <CategoriesContainer data={categories?.data} />
     </main>
   );
 }

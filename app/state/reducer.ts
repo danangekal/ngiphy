@@ -1,8 +1,16 @@
-import { ActionType, AppAction, SetKeyword, SetRating } from './action';
+import {
+  ActionType,
+  AppAction,
+  SetKeyword,
+  SetPage,
+  SetRating,
+} from './action';
 import { AppState } from './types';
 
 export function appReducer(state: AppState, action: AppAction) {
   switch (action.type) {
+    case ActionType.SetPage:
+      return { ...state, page: action.payload };
     case ActionType.SetKeyword:
       return { ...state, keyword: action.payload };
     case ActionType.SetRating:
@@ -12,6 +20,11 @@ export function appReducer(state: AppState, action: AppAction) {
       return state;
   }
 }
+
+export const setPage = (payload: number): SetPage => ({
+  type: ActionType.SetPage,
+  payload,
+});
 
 export const setKeyword = (payload: string): SetKeyword => ({
   type: ActionType.SetKeyword,

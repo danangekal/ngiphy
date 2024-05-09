@@ -11,6 +11,10 @@ export interface AppState {
    * props of rating search
    */
   rating: string;
+  /**
+   * props of page search
+   */
+  page: number;
 }
 
 export interface AppProviderProps {

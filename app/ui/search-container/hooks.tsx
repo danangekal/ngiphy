@@ -1,18 +1,18 @@
-import { ChangeEvent, KeyboardEvent } from 'react';
+import { ChangeEvent, KeyboardEvent, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { useAppContext } from '@/app/state/context';
 import { setKeyword, setRating } from '@/app/state/reducer';
 
-const useHooks = (page: string) => {
+const useHooks = (type: string) => {
   const { push } = useRouter();
   const searchParams = useSearchParams();
   const qsKeyword = searchParams.get('keyword');
   const qsRating = searchParams.get('rating');
   const { dispatch, state } = useAppContext();
   const { keyword, rating } = state;
-  const keywordValue = page === 'home' ? keyword : qsKeyword || '';
-  const ratingValue = page === 'home' ? rating : qsRating || '';
+  const keywordValue = keyword;
+  const ratingValue = rating;
   const ratingOption = [
     {
       label: 'Level 1 - G',
@@ -34,26 +34,28 @@ const useHooks = (page: string) => {
   const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e?.target?.value;
     dispatch(setKeyword(newValue));
-
-    if (page === 'search') {
-      push(`/search?keyword=${newValue}&rating=${qsRating}`);
-    }
   };
   const handleKeySearch = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e?.key === 'Enter' && page === 'home') {
-      push(`/search?keyword=${keyword}&rating=${rating}`);
-    }
-
-    if (e?.key === 'Enter' && page === 'search') {
-      push(`/search?keyword=${qsKeyword}&rating=${qsRating}`);
+    if (e?.key === 'Enter') {
+      push(`/search?page=1&rating=${ratingValue}&keyword=${keywordValue}`);
     }
   };
   const handleClickRating = (value: string) => {
     dispatch(setRating(value));
-    if (page === 'search') {
-      push(`/search?keyword=${qsKeyword}&rating=${value}`);
+    if (type === 'search') {
+      push(`/search?page=1&rating=${value}&keyword=${keywordValue}`);
     }
   };
+
+  useEffect(() => {
+    if (qsKeyword) {
+      dispatch(setKeyword(qsKeyword));
+    }
+
+    if (qsRating) {
+      dispatch(setRating(qsRating));
+    }
+  }, [dispatch, qsKeyword, qsRating]);
 
   return {
     handleChangeSearch,

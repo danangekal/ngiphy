@@ -3,9 +3,9 @@
 import Strings from '@/app/strings';
 
 import useHooks from './hooks';
-import { SearchBarProps } from './types';
+import { SearchContainerProps } from './types';
 
-const SearchBar = ({ page }: SearchBarProps) => {
+const SearchContainer = ({ type }: SearchContainerProps) => {
   const {
     handleChangeSearch,
     handleKeySearch,
@@ -13,11 +13,11 @@ const SearchBar = ({ page }: SearchBarProps) => {
     keywordValue,
     ratingValue,
     ratingOption,
-  } = useHooks(page);
+  } = useHooks(type);
 
   return (
     <div className="flex flex-col w-full items-center justify-between">
-      {page === 'home' ? (
+      {type === 'home' ? (
         <p className="py-4 font-medium sm:font-bold text-3xl sm:text-5xl text-blue-500">
           {Strings.title_app}
         </p>
@@ -63,7 +63,7 @@ const SearchBar = ({ page }: SearchBarProps) => {
           />
         </div>
       </div>
-      <div className="py-2 space-x-2 flex items-center justify-between text-xs text-blue-500">
+      <div className="py-2 space-x-2 flex flex-col sm:flex-row items-center justify-between text-xs text-blue-500">
         <p>{Strings.title_rating}</p>
         {ratingOption.map(({ label, value }: any) => (
           <button
@@ -80,4 +80,4 @@ const SearchBar = ({ page }: SearchBarProps) => {
   );
 };
 
-export default SearchBar;
+export default SearchContainer;

@@ -6,6 +6,7 @@ import { appReducer } from './reducer';
 import { AppContextValue, AppProviderProps, AppState } from './types';
 
 const initAppState: AppState = {
+  page: 1,
   keyword: '',
   rating: '',
 };

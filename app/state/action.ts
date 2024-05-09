@@ -1,6 +1,12 @@
 export enum ActionType {
+  SetPage,
   SetKeyword,
   SetRating,
+}
+
+export interface SetPage {
+  type: ActionType.SetPage;
+  payload: number;
 }
 
 export interface SetKeyword {
@@ -13,4 +19,4 @@ export interface SetRating {
   payload: string;
 }
 
-export type AppAction = SetKeyword | SetRating;
+export type AppAction = SetPage | SetKeyword | SetRating;

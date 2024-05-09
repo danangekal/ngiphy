@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Result container unchanged 1`] = `
+<div>
+  <div
+    class="flex flex-col w-full items-center justify-between"
+  >
+    <div
+      class="flex flex-row items-start py-4 text-sm text-blue-500 "
+    >
+      <p>
+        Search Result
+      </p>
+    </div>
+    <div
+      class="flex flex-col items-center justify-between w-full"
+    >
+      <p
+        class="text-red-500 text-md"
+      >
+        Something Wrong!
+      </p>
+    </div>
+  </div>
+</div>
+`;
