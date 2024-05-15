@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { Metadata } from 'next';
 
 import SearchContainer from '@/app/ui/search-container';
@@ -14,13 +13,11 @@ export const metadata: Metadata = {
 export default async function SearchPage() {
   return (
     <main className="flex min-h-screen flex-col p-24">
-      <Suspense>
-        {/* search container */}
-        <SearchContainer type="search" />
+      {/* search container */}
+      <SearchContainer type="search" />
 
-        {/* result search container */}
-        <ResultContainer />
-      </Suspense>
+      {/* result search container */}
+      <ResultContainer />
     </main>
   );
 }

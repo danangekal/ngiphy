@@ -1,5 +1,6 @@
 'use client';
 
+import DotLoading from '@/app/components/dot-loading';
 import Strings from '@/app/strings';
 
 import useHooks from './hooks';
@@ -21,16 +22,7 @@ const ResultContainer = () => {
       </div>
       <div className="flex flex-col items-center justify-between w-full">
         {isValidating && isLoading ? (
-          <div className="flex justify-center items-center py-6">
-            <div className="flex">
-              {[...Array(5)].map((_e, i) => (
-                <div
-                  key={i}
-                  className="w-5 h-5 bg-gradient-to-br from-blue-500 to-green-500 rounded-full mx-3 animate-bounce"
-                />
-              ))}
-            </div>
-          </div>
+          <DotLoading />
         ) : error ? (
           <p className="text-red-500 text-md">{Strings.title_error_general}</p>
         ) : data?.data?.length ? (
