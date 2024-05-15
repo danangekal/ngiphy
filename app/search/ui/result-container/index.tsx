@@ -28,11 +28,14 @@ const ResultContainer = () => {
         ) : data?.data?.length ? (
           <>
             <div className="flex flex-row flex-wrap items-center justify-between">
-              {data?.data?.map(({ id, images }: any) => (
-                <video key={id} className="py-4" controls>
-                  <source src={images?.fixed_height?.mp4} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+              {data?.data?.map(({ id, images, title }: any) => (
+                <div key={id} className="flex flex-col">
+                  <p className="text-xs truncate">{title}</p>
+                  <video className="py-4" controls>
+                    <source src={images?.fixed_height?.mp4} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
               ))}
             </div>
             <div className="flex flex-row flex-wrap w-full items-center justify-between py-4 text-blue-500 text-xs sm:text-lg">
