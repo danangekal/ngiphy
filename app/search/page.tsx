@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Metadata } from 'next';
 
 import SearchContainer from '@/app/ui/search-container';
@@ -14,10 +15,14 @@ export default async function SearchPage() {
   return (
     <main className="flex min-h-screen flex-col p-24">
       {/* search container */}
-      <SearchContainer type="search" />
+      <Suspense>
+        <SearchContainer type="search" />
+      </Suspense>
 
       {/* result search container */}
-      <ResultContainer />
+      <Suspense>
+        <ResultContainer />
+      </Suspense>
     </main>
   );
 }

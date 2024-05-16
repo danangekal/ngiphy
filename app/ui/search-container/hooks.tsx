@@ -7,8 +7,8 @@ import { setKeyword, setRating } from '@/app/state/reducer';
 const useHooks = (type: string) => {
   const { push } = useRouter();
   const searchParams = useSearchParams();
-  const qsKeyword = searchParams.get('keyword');
-  const qsRating = searchParams.get('rating');
+  const qsKeyword = searchParams.get('keyword') || '';
+  const qsRating = searchParams.get('rating') || '';
   const { dispatch, state } = useAppContext();
   const { keyword, rating } = state;
   const keywordValue = keyword;
