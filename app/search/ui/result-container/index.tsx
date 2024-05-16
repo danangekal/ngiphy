@@ -29,7 +29,10 @@ const ResultContainer = () => {
           <>
             <div className="flex flex-row flex-wrap items-center justify-between">
               {data?.data?.map(({ id, images, title }: any) => (
-                <div key={id} className="flex flex-col">
+                <div
+                  key={id}
+                  className="flex flex-col items-center justify-between"
+                >
                   <p className="text-xs truncate">{title}</p>
                   <video className="py-4" controls>
                     <source src={images?.fixed_height?.mp4} type="video/mp4" />

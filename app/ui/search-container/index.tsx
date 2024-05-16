@@ -70,7 +70,7 @@ const SearchContainer = ({ type }: SearchContainerProps) => {
             key={value}
             onClick={() => handleClickRating(value)}
             className={`border border-blue-500 me-2 px-2.5 py-0.5 my-0.5 rounded-full
-              ${ratingValue === value ? 'bg-blue-100' : ''}`}
+              ${ratingValue === value ? 'bg-blue-200' : ''}`}
           >
             {label}
           </button>
